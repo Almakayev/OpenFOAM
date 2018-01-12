@@ -22,33 +22,34 @@ FoamFile
         type            wall;
         inGroups        1(wall);
         nFaces          100;
-        startFace       895;
+        startFace       19800;
     }
     right
     {
-        type            patch;
-        nFaces          5;
-        startFace       995;
+        type            wall;
+        inGroups        1(wall);
+        nFaces          100;
+        startFace       19900;
     }
     bottom_axis
     {
         type            wall;
         inGroups        1(wall);
         nFaces          100;
-        startFace       1000;
+        startFace       20000;
     }
     left
     {
         type            patch;
-        nFaces          5;
-        startFace       1100;
+        nFaces          100;
+        startFace       20100;
     }
     frontAndBackPlanes
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          1000;
-        startFace       1105;
+        nFaces          20000;
+        startFace       20200;
     }
 )
 
