@@ -16,7 +16,6 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 application     sonicFoam;
-//application		rhoCentralFoam;
 
 startFrom       startTime;
 
@@ -25,7 +24,7 @@ startTime       0;
 stopAt          endTime;
 
 //endTime         1.0;
-endTime 		4e-05;
+endTime 		1;
 
 deltaT          2e-05;
 
