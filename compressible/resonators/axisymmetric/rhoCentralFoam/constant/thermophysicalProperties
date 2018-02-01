@@ -10,72 +10,40 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      blockMeshDict;
+    location    "constant";
+    object      thermophysicalProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-convertToMeters 1;
+thermoType
+{
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
 
-vertices
-(
-    (0 		0 		0)
-    (1.7 	0 		0)
-    (1.7 	0.05 	0)
-    (0 		0.05 	0)
-    (0 		0 		0.001)
-    (1.7 	0 		0.001)
-    (1.7 	0.05 	0.001)
-    (0 		0.05 	0.001)
-);
+mixture 
+{ 
+    specie 
+    { 
+        nMoles          1; 
+        molWeight       28.96; 
+    } 
+    thermodynamics 
+    { 
+        Cp              1004.5; 
+        Hf              2.544e+06; 
+    } 
+    transport 
+    { 
+        mu              1.935e-05;
+        Pr              1; 
+    } 
+}
 
-blocks
-(
-    hex (0 1 2 3 4 5 6 7) (200 50 1) simpleGrading (1 1 1)
-);
-
-edges
-(
-);
-
-boundary
-(
-    left
-    {
-        type 		patch;
-        faces		((0 4 7 3));
-    }
-    right
-    {
-        type 		wall;
-        faces 		((2 6 5 1));
-    }
-
-    top
-    {
-        type        wall;
-        faces 		((3 7 6 2));
-    }
-
-    bottom_axis
-    {
-        type        wall;
-		faces		((1 5 4 0));
-    }
-
-    frontAndBack
-    {
-        type empty;
-        faces
-        (
-            (0 3 2 1)
-            (4 5 6 7)
-        );
-    }
-
-);
-
-mergePatchPairs
-(
-);
 
 // ************************************************************************* //

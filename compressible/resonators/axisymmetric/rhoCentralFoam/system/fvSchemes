@@ -10,72 +10,46 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      blockMeshDict;
+    location    "system";
+    object      fvSchemes;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-convertToMeters 1;
+fluxScheme      Kurganov;
 
-vertices
-(
-    (0 		0 		0)
-    (1.7 	0 		0)
-    (1.7 	0.05 	0)
-    (0 		0.05 	0)
-    (0 		0 		0.001)
-    (1.7 	0 		0.001)
-    (1.7 	0.05 	0.001)
-    (0 		0.05 	0.001)
-);
+ddtSchemes
+{
+    default         Euler;
+}
 
-blocks
-(
-    hex (0 1 2 3 4 5 6 7) (200 50 1) simpleGrading (1 1 1)
-);
+gradSchemes
+{
+    default         Gauss linear;
+}
 
-edges
-(
-);
+divSchemes
+{
+    default         none;
+    div(tauMC)      Gauss linear;
+}
 
-boundary
-(
-    left
-    {
-        type 		patch;
-        faces		((0 4 7 3));
-    }
-    right
-    {
-        type 		wall;
-        faces 		((2 6 5 1));
-    }
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
 
-    top
-    {
-        type        wall;
-        faces 		((3 7 6 2));
-    }
+interpolationSchemes
+{
+    default         linear;
+    reconstruct(rho) vanLeer;
+    reconstruct(U)  vanLeerV;
+    reconstruct(T)  vanLeer;
+}
 
-    bottom_axis
-    {
-        type        wall;
-		faces		((1 5 4 0));
-    }
+snGradSchemes
+{
+    default         corrected;
+}
 
-    frontAndBack
-    {
-        type empty;
-        faces
-        (
-            (0 3 2 1)
-            (4 5 6 7)
-        );
-    }
-
-);
-
-mergePatchPairs
-(
-);
 
 // ************************************************************************* //
