@@ -37,7 +37,7 @@ boundaryField
 
     bottom_axis
     {
-        type            zeroGradient;
+        type            symmetryPlane;
     }
 
     frontAndBack
