@@ -51,18 +51,10 @@ maxCo 0.8;
 adjustTimeStep  yes;
 
 maxDeltaT       1;
-/*
+
+//Output
 functions
 {
-    libs            ("libfieldFunctionObjects.so");
-
-    Ma
-    {
-        type            MachNo;
-        executeControl  writeTime;
-        writeControl    writeTime;
-    }
-
     probes
     {
         libs            ("libsampling.so");
@@ -73,14 +65,9 @@ functions
         fields          (p);
         probeLocations
         (
-            ( -0.045  0     0     )
-            ( -0.045  0.020 0     )
-            ( -0.010  0     0     )
-            (  0.0125 0     0     )
-            (  0.0125 0.020 0     )
+            (0 0 0)
+            // (0.85 0 0)
+            // (1.7 0 0)
         );
     }
 }
-*/
-
-// ************************************************************************* //
