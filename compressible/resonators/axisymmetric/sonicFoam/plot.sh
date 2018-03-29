@@ -22,5 +22,7 @@ set terminal postscript eps size 5,4 enhanced color
 set xlabel "Time (s)"
 set ylabel "Pressure at the piston (Pa)"
 set output "piston_pressure.eps"
-plot "postProcessing/probes/0/p" us 1:(\$2/109511.8) t "Pressure at the piston" w l
+#plot "postProcessing/probes/0/p" us 1:(\$2/109511.8) t "Pressure at the piston" w l
+plot "postProcessing/probes/0/T" us 1:(\$2) t "Temperature at the piston" w l
+
 EOF
