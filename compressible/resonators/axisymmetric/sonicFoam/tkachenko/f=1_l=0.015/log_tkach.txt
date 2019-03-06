@@ -1,0 +1,15 @@
+The sonicFoam functionality has been merged into the transonic option of the
+latest rhoPimpleFoam solver and the sonicFoam tutorials moved into the
+rhoPimpleFoam tutorials directory.
+
+To run rhoPimpleFoam in transonic mode set the transonic option in the
+PIMPLE sub-dictionary of fvSolution:
+
+PIMPLE
+{
+    .
+    .
+    .
+    transonic            yes;
+}
+

@@ -9,30 +9,40 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    object      p;
+    class       volVectorField;
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0];
+dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform 100325.0;
+internalField   uniform (0 0 0);
 
 boundaryField
 {
     left
-    {
-        type            zeroGradient;
-    }
+	{
+		//a sin(2 \pi f (t - t_0)) s + l
+		type uniformFixedValue;
+		uniformValue sine;
+	    uniformValueCoeffs
+        {
+            frequency 163.711187;
+            amplitude 0.154294;// U0            
+	    scale     (1 0 0); 
+            level     (0 0 0); // offset
+            t0  0;
+        }
+	}
 
     right
     {
-        type            zeroGradient;
+        type            noSlip;
     }
 
     top
     {
-        type            zeroGradient;
+        type            noSlip;
     }
 
     bottom_axis
